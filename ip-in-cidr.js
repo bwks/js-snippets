@@ -21,22 +21,22 @@ const calculateCidrRange = cidr => {
 
 // Return an array of usable IPv4 Addresses in a CIDR
 const IpsInRange = (first, last) => {
-    let all = []
-    firstInt = ip4ToInt(first)
-    lastInt = ip4ToInt(last)
-    // /32 prefix
-    if (firstInt === lastInt) {
-        return [first]
-    // /31 prefix
-    } else if (firstInt+1 === lastInt) {
-        return [first, last]
-    // /30 or lower prefix
-    } else {
-        for (let i = 1; firstInt + i < lastInt; i++) {
-            all.push(intToIp4(firstInt + i))
-        }
-        return all
-    }    
+  let all = []
+  firstInt = ip4ToInt(first)
+  lastInt = ip4ToInt(last)
+  // /32 prefix
+  if (firstInt === lastInt) {
+      return [first]
+  // /31 prefix
+  } else if (firstInt+1 === lastInt) {
+      return [first, last]
+  // /30 or lower prefix
+  } else {
+      for (let i = 1; firstInt + i < lastInt; i++) {
+          all.push(intToIp4(firstInt + i))
+      }
+      return all
+  }    
 }
 
 /* Usage
